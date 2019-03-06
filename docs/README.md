@@ -1,4 +1,6 @@
-# Welcome to RCOS!
+# Firebook!
+
+A guidebook for Pytorch.
 
 The **Rensselaer Center for Open Source** - or **RCOS** (*`ar-kos`*) for short - is a community of motivated students at [Rensselaer Polytechnic Institute](http://rpi.edu) who develop open source projects under the guidance of experienced instructors and student mentors.
 
