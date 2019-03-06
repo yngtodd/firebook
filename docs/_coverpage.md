@@ -2,7 +2,7 @@
 
 <hr style='width:40%; border-color:#da291c;'>
 <h1 style="color: #da291c">Handbook</h1>
-<p style="color: #da291c">version 0.2</p>
+<p style="color: #da291c">version 0.0.1</p>
 
 [GitHub](https://github.com/yngtodd/firebook)
 <!-- [Get Started](#docsify) -->
