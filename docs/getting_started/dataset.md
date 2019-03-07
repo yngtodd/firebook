@@ -8,6 +8,8 @@ learning case, a tuple (data, label). The `__len__` method returns the number
 of data samples in our dataset. This is used internally by Pytorch's dataloader
 class.
 
+## Dataset Template
+
 ```python
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
