@@ -8,5 +8,8 @@
   * [Models](getting_started/models.md)
   * [Neural Network from Scratch](getting_started/from_scratch.md)
 
+* Next Steps
+  * [Composing Models](next_steps/composition_basics.md)
+
 * Resources
   * [Resources](resources/resources.md)
