@@ -1,4 +1,4 @@
-# Dataset Classes
+# Datasets
 
 Data classes give us the ability to conveniently contain our data. When we
 inherit from `torch.utils.data.Dataset`, we need to define two methods,
