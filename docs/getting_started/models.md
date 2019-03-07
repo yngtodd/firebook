@@ -37,6 +37,8 @@ So long as we define a differentiable function, Pytorch will take care of the ba
 This is where Pytorch's design around automatic differentiation comes into play. Next up, we'll go 
 from our model template to an implementation of a classic neural network, the mulit-layer perceptron.
 
+## Example 1: Multi-Layer Perceptron
+
 ```python
 import torch.nn as nn
 
