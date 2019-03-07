@@ -28,6 +28,7 @@ class Model(nn.Module):
     def forward(self, x):
         # ToDo
         # Pass our batched data, x, through our model components.
+        # Optionally, do something crazy (e.g. print your intermediate representations, etc.)
 ```
 
 You have probably heard of [backpropagation](https://www.youtube.com/watch?v=Ilg3gGewQ5U), the 
