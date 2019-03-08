@@ -19,13 +19,13 @@ class CustomDataset(Dataset):
         pass
     def __len__(self):
         # You should change 0 to the total size of your dataset.
-        return 0
+        return 1 
 
 # You can then use the prebuilt data loader.
 dataset = CustomDataset()
 
 train_loader = DataLoader(
-    dataset=custom_dataset,
+    dataset=dataset,
     batch_size=64,
     shuffle=True
 )
