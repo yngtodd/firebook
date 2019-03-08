@@ -1,5 +1,13 @@
 # Dataset Classes
 
+Data classes give us the ability to conveniently contain our data. When we
+inherit from `torch.utils.data.Dataset`, we need to define two methods,
+`__getitem__` and `__len__`. The first method, `__getitem__` loads the data
+at a given batch `index`, preprocesses it, and returns, in the supervised 
+learning case, a tuple (data, label). The `__len__` method returns the number
+of data samples in our dataset. This is used internally by Pytorch's dataloader
+class.
+
 ```python
 from torch.utils.data import Dataset
 from torch.utils.data import DataLoader
@@ -29,3 +37,7 @@ train_loader = DataLoader(
     shuffle=True
 )
 ```
+
+That last bit shows the `torch.utils.data.Dataloader` class. This class wraps 
+our dataset, determines the batch size handled by each gradient descent step, 
+and controls any shuffling of the between epochs.
