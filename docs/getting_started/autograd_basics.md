@@ -35,12 +35,12 @@ import torch.nn as nn
 x = torch.randn(5, 5)
 y = torch.randn(5, 3)
 
-# Build a fully connected layer.
+# Instantiate a fully connected layer.
 model = nn.Linear(5, 2)
 print (f'w: {model.weight}')
 print (f'b: {model.bias}')
 
-# Build loss function and optimizer.
+# Set the loss function and optimizer.
 criterion = nn.MSELoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
 
