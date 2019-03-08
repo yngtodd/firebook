@@ -4,6 +4,7 @@
 * Getting Started
   * [Install Pytorch](getting_started/install_torch.md)
   * [Autograd Basics](getting_started/autograd_basics.md)
+  * [Dataset Classes](getting_started/dataset.md)
 
 * Resources
   * [Resources](resources/resources.md)
