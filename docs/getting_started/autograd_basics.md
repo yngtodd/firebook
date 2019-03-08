@@ -11,7 +11,6 @@ differentiation (AD) and can operate on both CPUs and GPUs.
 import torch
 import torch.nn as nn
 
-
 x = torch.tensor(5., requires_grad=True)
 w = torch.randn(1, requires_grad=True)
 b = torch.tensor(1., requires_grad=True)
