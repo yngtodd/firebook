@@ -5,7 +5,7 @@ tool for deep learning. At its heart, Pytorch is a tensor library,
 similar to Numpy. Unlike Numpy, however, it has built in automatic 
 differentiation (AD) and can operate on both CPUs and GPUs.
 
-## Autograd Example 1.
+### Example 1.
 
 ```python
 import torch
