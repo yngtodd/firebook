@@ -9,7 +9,6 @@ differentiation (AD) and can operate on both CPUs and GPUs.
 
 ```python
 import torch
-import torch.nn as nn
 
 x = torch.tensor(5., requires_grad=True)
 w = torch.randn(1, requires_grad=True)
