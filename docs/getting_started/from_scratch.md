@@ -11,5 +11,62 @@ imagine that this is what Pytorch is doing in the background, though their
 implementation is not quite this simple.
 
 ```python
-# TODO: implement a model class with Pytorch tensors
+import torch
+import torch.nn as nn
+
+
+class Sigmoid:
+    """Standard Sigmoid function.
+    
+    Our forward function is the normal sigmoid()
+    Our backward function is the functions' derivative.
+
+    These names are just used to clarify when we use them 
+    in our neural network.
+    """
+    def forward(self, s):
+        return 1 / (1 + torch.exp(-s))
+    
+    def backward(self, s):
+        """Derivative of the Sigmoid function."""
+        return s * (1 - s)
+
+
+class MultiLayerPerceptron(nn.Module):
+    
+    def __init__(self, input_size, hidden_size, num_classes):
+        super(MultiLayerPerceptron, self).__init__()
+        
+        # Weights
+        self.W1 = torch.randn(input_size, hidden_size)
+        self.W2 = torch.randn(hidden_size, num_classes)
+        # Activation function
+        self.sigmoid = Sigmoid()
+        
+    def forward(self, x):
+        self.z = torch.matmul(x, self.W1)
+        self.z2 = self.sigmoid.forward(self.z)
+        self.z3 = torch.matmul(self.z2, self.W2)
+        out = self.sigmoid.forward(self.z3)
+        return out
+    
+    def backward(self, x, y, logits):
+        self.error = y - logits
+        self.logits_delta = self.error * self.sigmoid.backward(logits)
+        self.z2_error = torch.matmul(self.logits_delta, torch.t(self.W2))
+        self.z2_delta = self.z2_error * self.sigmoid.backward(self.z2)
+        self.W1 += torch.matmul(torch.t(x), self.z2_delta)
+        self.W2 += torch.matmul(torch.t(self.z2), self.logits_delta)
+        
+    def train(self, x, y):
+        logits = self.forward(x)
+        self.backward(x, y, logits)
 ```
+
+Above we have defined a fully connected neural network with one hidden layer. This 
+network is composed of two layers of weights `W1` and `W2` which have shapes
+`(input_size, hidden_size)` and `(hidden_size, num_classes)` respectively. Connecting
+these two layers is the `sigmoid` function. The final layer of the network is also followed
+by the sigmoid function, which ensures all of our model's predictions lie within the
+interval [0,1].
+ 
