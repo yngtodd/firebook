@@ -80,7 +80,7 @@ lie within the interval [0,1].
  table:
 
  
- | <code>x_{1}</code> | <code>x_{2}</code>   | label     |
+ | $x_1$            | $x_2$   | label     |
  |   :---:            |   :---:              |   :---:   |
  | 1                  | 0                    | 1         |
  | 1                  | 1                    | 0         |
