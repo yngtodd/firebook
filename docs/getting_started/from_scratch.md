@@ -79,11 +79,10 @@ lie within the interval [0,1].
  either $x_{1}$ or $x_{2}$ is true, but not both. This can be summarized by the following truth
  table:
 
- ```
+ 
  | <code>x_{1}</code> | <code>x_{2}</code>   | label     |
  |   :---:            |   :---:              |   :---:   |
  | 1                  | 0                    | 1         |
  | 1                  | 1                    | 0         |
  | 0                  | 1                    | 1         |
  | 0                  | 0                    | 0         |
- ```
