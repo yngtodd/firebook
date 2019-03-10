@@ -73,3 +73,7 @@ is similarly followed by the sigmoid function, which ensures all of our model's 
 lie within the interval [0,1].
 
 ### Example: XOR
+
+ There is an early example problem for machine learning algorithms called the 'exclusive or'
+ (XOR) problem. Given two binary variables, $x_{1}$ and $x_{2}$, the XOR function is true when
+ either $x_{1}$ or $x_{2}$ is true, but not both.
