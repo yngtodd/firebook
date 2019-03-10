@@ -91,8 +91,8 @@ lie within the interval [0,1].
  layer neural network (perceptron) cannot learn a decision boundary that will correctly 
  classify this problem. Our multi-layer perceptron, however, can.
 
- ```python
- def print_predictions(model):
+```python
+def print_predictions(model):
     """Print the probability for each example.
     
     This is just a helper function to check in our model.
@@ -107,21 +107,21 @@ lie within the interval [0,1].
     print(f"Prediction (1, 1): {pred11.item():.4f}")
 
 
- # Use for replicability.
- torch.manual_seed(42)
+# Use for replicability.
+torch.manual_seed(42)
     
- # Training data for XOR.
- x = torch.tensor([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=torch.float)
- y = torch.tensor([[0], [1], [1], [0]], dtype=torch.float)
+# Training data for XOR.
+x = torch.tensor([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=torch.float)
+y = torch.tensor([[0], [1], [1], [0]], dtype=torch.float)
 
- # Instantiate our model
- # Note: num_classes can be set to 1 since we can get the logits of the 
- # negative class by taking 1 - logits.
- model = MultiLayerPerceptron(input_size=2, hidden_size=3, num_classes=1)
+# Instantiate our model
+# Note: num_classes can be set to 1 since we can get the logits of the 
+# negative class by taking 1 - logits.
+model = MultiLayerPerceptron(input_size=2, hidden_size=3, num_classes=1)
  
- # Binary cross entropy loss
- criterion = nn.BCELoss()
- ```
+# Binary cross entropy loss
+criterion = nn.BCELoss()
+```
 
  Above we have defined a helper function, `print_predictions` to give us the 
  predicted probability of each class by our model. We then define two Pytorch
@@ -133,19 +133,19 @@ lie within the interval [0,1].
  we can first see what our model will predict for each of the classes before being
  trained:
 
- ```python
- print_predictions(model)
+```python
+print_predictions(model)
 
- >>> Prediction (0, 0): 0.7342
- >>> Prediction (1, 0): 0.7697
- >>> Prediction (0, 1): 0.7830
- >>> Prediction (1, 1): 0.8135
- ```
+>>> Prediction (0, 0): 0.7342
+>>> Prediction (1, 0): 0.7697
+>>> Prediction (0, 1): 0.7830
+>>> Prediction (1, 1): 0.8135
+```
 
  At first, the model gives a high likelihood of each class. To train our model, 
  we simply run
 
- ```python
+```python
 # Train the model for 2000 epochs.
 # Each epoch will see every sample of data.
 for i in range(2000):
