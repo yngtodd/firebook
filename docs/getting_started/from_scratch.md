@@ -68,8 +68,14 @@ network is composed of two layers of weights `W1` and `W2` which have shapes
 `(input_size, hidden_size)` and `(hidden_size, num_classes)` respectively. When we 
 instantiate our models, these weights will be initialized to be random normal vectors.
 
-Connecting these two layers is the `sigmoid` function. The final layer of the network 
+Connecting our two linear layers is the `sigmoid` function. The final layer of the network 
 is similarly followed by the sigmoid function, which ensures all of our model's predictions 
 lie within the interval [0,1].
 
+### Example: XOR
+
+There is an early example problem for machine learning algorithms called the 'exclusive or' 
+(`XOR`) problem. 
+
+\overgroup{AB}
  
