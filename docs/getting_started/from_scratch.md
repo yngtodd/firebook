@@ -79,10 +79,90 @@ lie within the interval [0,1].
  either $x_{1}$ or $x_{2}$ is true, but not both. This can be summarized by the following truth
  table:
 
- 
  | $x_1$ | $x_2$ | label |
  | :---: | :---: | :---: |
  | 1     | 0     | 1     |
  | 1     | 1     | 0     |
  | 0     | 1     | 1     |
  | 0     | 0     | 0     |
+
+ The XOR problem is interesting in that it is not 
+ [linearly separable](https://en.wikipedia.org/wiki/Linear_separability). As such, a single
+ layer neural network (perceptron) cannot learn a decision boundary that will correctly 
+ classify this problem. Our multi-layer perceptron, however, can.
+
+ ```python
+ def print_predictions(model):
+    """Print the probability for each example.
+    
+    This is just a helper function to check in our model.
+    """
+    pred00 = model.forward(torch.tensor([0., 0.]))
+    pred10 = model.forward(torch.tensor([1., 0.]))
+    pred01 = model.forward(torch.tensor([0., 1.]))
+    pred11 = model.forward(torch.tensor([1., 1.]))
+    print(f"Prediction (0, 0): {pred00.item():.4f}")
+    print(f"Prediction (1, 0): {pred10.item():.4f}")
+    print(f"Prediction (0, 1): {pred01.item():.4f}")
+    print(f"Prediction (1, 1): {pred11.item():.4f}")
+
+
+ # Use for replicability.
+ torch.manual_seed(42)
+    
+ # Training data for XOR.
+ x = torch.tensor([[0, 0], [0, 1], [1, 0], [1, 1]], dtype=torch.float)
+ y = torch.tensor([[0], [1], [1], [0]], dtype=torch.float)
+
+ # Instantiate our model
+ # Note: num_classes can be set to 1 since we can get the logits of the 
+ # negative class by taking 1 - logits.
+ model = MultiLayerPerceptron(input_size=2, hidden_size=3, num_classes=1)
+ 
+ # Binary cross entropy loss
+ criterion = nn.BCELoss()
+ ```
+
+ Above we have defined a helper function, `print_predictions` to give us the 
+ predicted probability of each class by our model. We then define two Pytorch
+ tensors, `x` and `y` for our training data and labels respectively. We then 
+ instantiate our model, telling it that our input data has two dimensions, and
+ that we would like the hidden dimension of our model to have three dimensions.
+ Finally, we will use [`nn.BCELoss`](https://pytorch.org/docs/stable/nn.html#torch.nn.BCELoss)
+ as our loss function. Since we randomly initialize the weights of our neural network,
+ we can first see what our model will predict for each of the classes before being
+ trained:
+
+ ```python
+ print_predictions(model)
+
+ >>> Prediction (0, 0): 0.7342
+ >>> Prediction (1, 0): 0.7697
+ >>> Prediction (0, 1): 0.7830
+ >>> Prediction (1, 1): 0.8135
+ ```
+
+ At first, the model gives a high likelihood of each class. To train our model, 
+ we simply run
+
+ ```python
+# Train the model for 2000 epochs.
+# Each epoch will see every sample of data.
+for i in range(2000):
+    if i % 100 == 0:
+        loss = criterion(m(x), y)
+        print (f"Epoch {i} Loss: {loss}")
+    model.train(x, y)
+```
+
+Finally, we can print our model predictions again, and we find that the model has
+learned the XOR function:
+
+```python
+print_predictions(model)
+
+>>> Prediction (0, 0): 0.0581
+>>> Prediction (1, 0): 0.9210
+>>> Prediction (0, 1): 0.9029
+>>> Prediction (1, 1): 0.0781
+```
