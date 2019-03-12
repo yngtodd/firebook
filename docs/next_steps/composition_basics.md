@@ -23,7 +23,7 @@ as `nn.Module`s, to be used repeatedly in our U-Net model.
 
 ```python
 import torch
-from torch import nn
+import torch.nn as nn
 
 
 class DoubleBlock(nn.Module):
